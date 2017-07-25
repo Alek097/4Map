@@ -20,5 +20,70 @@
             <iframe src="cvm//viewer//index.html"></iframe>
         </div>
     </div>
+
+    <script>
+        var firstMap = document.getElementById('firstMap').getElementsByTagName('iframe')[0].contentWindow;
+        var secondMap = document.getElementById('secondMap').getElementsByTagName('iframe')[0].contentWindow;
+        var thirdMap = document.getElementById('thirdMap').getElementsByTagName('iframe')[0].contentWindow;
+        var fourthMap = document.getElementById('fourthMap').getElementsByTagName('iframe')[0].contentWindow;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            firstMap.onMapScale = function (value) {
+                if (secondMap.map.getScale() !== value) {
+                    secondMap.setScale(value);
+                }
+
+                if (thirdMap.map.getScale() !== value) {
+                    thirdMap.setScale(value);
+                }
+
+                if (fourthMap.map.getScale() !== value) {
+                    fourthMap.setScale(value);
+                }
+            };
+
+            secondMap.onMapScale = function (value) {
+                if (firstMap.map.getScale() !== value) {
+                    firstMap.setScale(value);
+                }
+
+                if (thirdMap.map.getScale() !== value) {
+                    thirdMap.setScale(value);
+                }
+
+                if (fourthMap.map.getScale() !== value) {
+                    fourthMap.setScale(value);
+                }
+            };
+
+            thirdMap.onMapScale = function (value) {
+                if (firstMap.map.getScale() !== value) {
+                    firstMap.setScale(value);
+                }
+
+                if (secondMap.map.getScale() !== value) {
+                    secondMap.setScale(value);
+                }
+
+                if (fourthMap.map.getScale() !== value) {
+                    fourthMap.setScale(value);
+                }
+            };
+
+            fourthMap.onMapScale = function (value) {
+                if (firstMap.map.getScale() !== value) {
+                    firstMap.setScale(value);
+                }
+
+                if (secondMap.map.getScale() !== value) {
+                    secondMap.setScale(value);
+                }
+
+                if (thirdMap.map.getScale() !== value) {
+                    thirdMap.setScale(value);
+                }
+            };
+        });
+    </script>
 </body>
 </html>
