@@ -67,8 +67,8 @@ define([
                 }
 
                 this.map.on("extent-change", function (evt) {
-                    if (window.onMapScale != null && window.isCallEvent) {
-                        window.onMapScale(evt.lod.scale)
+                    if (window.onMapChange != null) {
+                        window.onMapChange(evt.lod.scale, evt.target.extent.getCenter());
                     }
                 });
 

@@ -22,13 +22,18 @@
     </div>
 
     <script>
-        var firstMap = document.getElementById('firstMap').getElementsByTagName('iframe')[0].contentWindow;
-        var secondMap = document.getElementById('secondMap').getElementsByTagName('iframe')[0].contentWindow;
-        var thirdMap = document.getElementById('thirdMap').getElementsByTagName('iframe')[0].contentWindow;
-        var fourthMap = document.getElementById('fourthMap').getElementsByTagName('iframe')[0].contentWindow;
+        var firstMap = null;
+        var secondMap = null;
+        var thirdMap = null;
+        var fourthMap = null;
 
         document.addEventListener("DOMContentLoaded", function () {
-            firstMap.onMapScale = function (value) {
+            firstMap = document.getElementById('firstMap').getElementsByTagName('iframe')[0].contentWindow;
+            secondMap = document.getElementById('secondMap').getElementsByTagName('iframe')[0].contentWindow;
+            thirdMap = document.getElementById('thirdMap').getElementsByTagName('iframe')[0].contentWindow;
+            fourthMap = document.getElementById('fourthMap').getElementsByTagName('iframe')[0].contentWindow;
+
+            firstMap.onMapChange = function (value, centerPoint) {
                 if (secondMap.map.getScale() !== value) {
                     secondMap.setScale(value);
                 }
@@ -40,9 +45,24 @@
                 if (fourthMap.map.getScale() !== value) {
                     fourthMap.setScale(value);
                 }
+
+                var center = secondMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    secondMap.map.centerAt(centerPoint);
+                }
+
+                center = thirdMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    thirdMap.map.centerAt(centerPoint);
+                }
+
+                center = fourthMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    fourthMap.map.centerAt(centerPoint);
+                }
             };
 
-            secondMap.onMapScale = function (value) {
+            secondMap.onMapChange = function (value, centerPoint) {
                 if (firstMap.map.getScale() !== value) {
                     firstMap.setScale(value);
                 }
@@ -54,9 +74,24 @@
                 if (fourthMap.map.getScale() !== value) {
                     fourthMap.setScale(value);
                 }
+
+                var center = firstMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    firstMap.map.centerAt(centerPoint);
+                }
+
+                center = thirdMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    thirdMap.map.centerAt(centerPoint);
+                }
+
+                center = fourthMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    fourthMap.map.centerAt(centerPoint);
+                }
             };
 
-            thirdMap.onMapScale = function (value) {
+            thirdMap.onMapChange = function (value, centerPoint) {
                 if (firstMap.map.getScale() !== value) {
                     firstMap.setScale(value);
                 }
@@ -70,7 +105,7 @@
                 }
             };
 
-            fourthMap.onMapScale = function (value) {
+            fourthMap.onMapChange = function (value, centerPoint) {
                 if (firstMap.map.getScale() !== value) {
                     firstMap.setScale(value);
                 }
