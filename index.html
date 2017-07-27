@@ -103,6 +103,21 @@
                 if (fourthMap.map.getScale() !== value) {
                     fourthMap.setScale(value);
                 }
+
+                var center = firstMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    firstMap.map.centerAt(centerPoint);
+                }
+
+                center = thirdMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    thirdMap.map.centerAt(centerPoint);
+                }
+
+                center = fourthMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    fourthMap.map.centerAt(centerPoint);
+                }
             };
 
             fourthMap.onMapChange = function (value, centerPoint) {
@@ -116,6 +131,21 @@
 
                 if (thirdMap.map.getScale() !== value) {
                     thirdMap.setScale(value);
+                }
+
+                var center = firstMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    firstMap.map.centerAt(centerPoint);
+                }
+
+                center = thirdMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    secondMap.map.centerAt(centerPoint);
+                }
+
+                center = fourthMap.map.extent.getCenter();
+                if (center.x != centerPoint.x && center.y != centerPoint.y) {
+                    fourthMap.map.centerAt(centerPoint);
                 }
             };
         });
